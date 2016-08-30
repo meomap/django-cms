@@ -10,7 +10,7 @@ from django.contrib import messages
 from django.core.exceptions import ImproperlyConfigured, ValidationError
 from django.template.defaultfilters import force_escape
 from django.utils import six
-from django.utils.encoding import force_text, python_2_unicode_compatible, smart_str
+from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from cms.constants import PLUGIN_MOVE_ACTION, PLUGIN_COPY_ACTION
@@ -459,7 +459,7 @@ class CMSPluginBase(six.with_metaclass(CMSPluginBaseMetaclass, admin.ModelAdmin)
         pass
 
     def __repr__(self):
-        return smart_str(self.name)
+        return force_text(self.name)
 
     def __str__(self):
         return self.name
