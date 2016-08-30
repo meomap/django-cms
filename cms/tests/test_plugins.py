@@ -1732,6 +1732,13 @@ class SimplePluginTests(TestCase):
 
         self.assertEqual(MyPlugin.name, 'My Plugin')
 
+    def test_simple_repr(self):
+        class MyPlugin(CMSPluginBase):
+            render_template = 'base.html'
+
+        plugin = MyPlugin(ArticlePluginModel, admin.site)
+        self.assertEqual(repr(plugin), 'My Plugin')
+
     def test_simple_context(self):
         class MyPlugin(CMSPluginBase):
             render_template = 'base.html'
